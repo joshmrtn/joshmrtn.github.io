@@ -11,7 +11,7 @@
 
   /* Set basic font styling */
   font-family: sans-serif;
-  line-height: 1.5;
+  line-height: 1.7;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -22,6 +22,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Remove the default margin/padding from the body */
@@ -54,7 +60,7 @@ body {
 /* Define container (Mobile)*/
 .wrapper {
   display: grid;
-  gap: 20px;
+  gap: 1rem;
   grid-template-areas:
     "header"
     "nav"
@@ -63,7 +69,7 @@ body {
     "footer";
 }
 /* Define container for >= 500px screens */
-@media (width >= 500px) {
+@media (width >= 800px) {
   .wrapper {
     grid-template-columns: 1fr 3fr;
     grid-template-areas:
@@ -74,14 +80,16 @@ body {
   }
   nav ul {
     display: flex;
-    justify-content: space-between;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    gap: 0.1rem 1rem;
   }
 }
 
 /* Define grid container for >= 700px */
-@media (width >= 700px) {
+@media (width >= 1000px) {
   .wrapper {
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 4fr 2fr;
     grid-template-areas:
       "header header header"
       "nav content sidebar"
@@ -93,13 +101,45 @@ body {
   }
 }
 
-/* Style header */
+/* Style top header */
 .main-header {
   padding: 1rem;
 
   background-color: var(--dim-green);
   color: var(--faint-green);
-  box-shadow: 0 0 5px var(--dark-green);
+  box-shadow:
+    0 1px 5px var(--dark-green),
+    inset -100px -100px 100px -100px var(--dark-blue);
+  border-radius: 0 0 50% 0;
+}
+.main-header h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(
+    to right,
+    var(--faint-blue) 0%,
+    var(--faint-green) 5%,
+    var(--faint-blue) 10%,
+    var(--faint-green) 15%,
+    var(--faint-blue) 20%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--faint-blue);
+}
+
+/* Set up links styling */
+a {
+  text-decoration: var(--soft-blue) solid underline 0.1rem;
+  color: var(--soft-blue);
+}
+a:visited {
+  text-decoration: var(--dim-green) solid underline 0.1rem;
+  color: var(--dim-green);
+}
+a:hover {
+  color: var(--faint-green);
+  text-decoration: var(--faint-green) wavy underline 0.15rem;
 }
 
 /* Remove default ul styles on nav links */
@@ -117,21 +157,20 @@ nav.main-nav ul {
   display: flex;
   flex-flow: row-wrap;
   justify-items: center;
-  align-content: space-between;
+  align-content: space-evenly;
   align-items: center;
-  gap: 1rem;
+  gap: 0.1rem;
 }
 /* Style each nav button/link */
 nav.main-nav ul li {
-  margin: 0px;
   justify-content: center;
   width: 100%;
 }
 nav.main-nav ul li a {
   text-align: center;
   display: inline-block;
-  width: 70%;
-  padding: 0.75rem 0.75rem;
+  width: 100%;
+  padding: 0.25rem 0.3rem;
   border: 1px solid var(--dim-blue);
   border-radius: 0.5rem;
   box-shadow:
@@ -148,17 +187,18 @@ nav.main-nav ul li a {
 }
 
 /* customize nav link stylings*/
-nav a {
+nav.main-nav a {
   color: var(--faint-blue);
   text-decoration: none;
 }
-nav a.current-page {
+nav.main-nav a.current-page {
   color: var(--dim-blue);
   text-decoration: none;
   font-weight: bold;
   cursor: default;
 }
 nav.main-nav a:hover {
+  text-decoration: none;
   font-weight: bold;
   box-shadow: 0 0 10px var(--faint-blue) inset;
   border-color: var(--faint-green);
@@ -169,13 +209,81 @@ nav.main-nav a:hover {
 
 /* Footer styling */
 .main-footer {
-  padding: 1rem;
+  padding-top: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
   background-color: var(--dim-blue);
-  box-shadow: 0 0 10px var(--dim-blue);
+  box-shadow:
+    inset 0 110px 100px -100px var(--faint-blue),
+    inset -100px 100px 100px -100px var(--dark-blue);
+  border-radius: 25% 0 0 0;
 }
 .copyright-notice {
   font-size: small;
   color: var(--soft-blue);
   padding-bottom: 0;
   margin-bottom: 0;
+}
+
+/* Style main content area */
+main.content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 1rem 0.1rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow:
+    2px 2px 5px var(--dim-blue) inset,
+    2px 2px 5px var(--dark-green);
+  background-color: var(--dark-blue);
+  color: var(--faint-blue);
+}
+main.content p {
+  max-width: 65ch;
+}
+
+/* Style sidebar (aside) area */
+aside.side {
+  margin: 1rem 0.1rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow:
+    2px 2px 5px var(--dim-blue) inset,
+    2px 2px 5px var(--dark-green);
+}
+
+/* Headers */
+h1 {
+  font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
+}
+h2 {
+  font-size: clamp(1.5rem, 3vw + 1rem, 2rem);
+  margin: 1.5rem 0 1rem 0;
+}
+h3 {
+  font-size: clamp(1rem, 2vw + 1rem, 1.5rem);
+  margin: 1.5rem 0 1rem 0;
+}
+h4 {
+  font-size: clamp(0.9rem, 1.9vw + 1rem, 1.1rem);
+  margin: 1.5rem 0 1rem 0;
+}
+h5 {
+  font-size: clamp(0.8rem, 1.7vw + 1rem, 1rem);
+  margin: 1.5rem 0 1rem 0;
+}
+h6 {
+  font-size: clamp(0.7rem, 1.5vw + 1rem, 0.9rem);
+  margin: 1.5rem 0 1rem 0;
+}
+
+em {
+  color: white;
+  text-shadow: 0 0 5px black;
+  box-shadow:
+    0 0 5px var(--dim-green),
+    inset 0 0 5px var(--dim-green);
+  border-radius: 30% 2% 30% 2%;
 }
