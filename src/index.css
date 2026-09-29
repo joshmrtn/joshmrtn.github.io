@@ -1,16 +1,33 @@
 :root {
+  /* Set color variables */
+  --faint-blue: rgb(231, 241, 253); /* #e7f1fd; */
+  --faint-green: rgb(240, 251, 234); /* #f0fbea; */
+  --soft-blue: rgb(160, 198, 248); /* #90dc61; */
+  --soft-green: rgb(144, 220, 97); /* #a1c7f8; */
+  --dim-blue: rgb(77, 95, 117); /* #4d6077 */
+  --dim-green: rgb(93, 143, 63); /* #5d8f3f; */
+  --dark-blue: rgb(27, 34, 42); /* #1b222a; */
+  --dark-green: rgb(43, 66, 29); /* #2b421d */
+
+  /* Set basic font styling */
   font-family: sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--faint-blue);
+  background-color: var(--dark-blue);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove the default margin/padding from the body */
+body {
+  margin: 0;
+  padding: 0;
 }
 
 /* --- Grid Layout - responsive grid --- */
@@ -30,6 +47,10 @@
 .main-footer {
   grid-area: footer;
 }
+.current-page {
+  color: var(--soft-blue);
+}
+
 /* Define container (Mobile)*/
 .wrapper {
   display: grid;
@@ -70,4 +91,91 @@
   nav ul {
     flex-direction: column;
   }
+}
+
+/* Style header */
+.main-header {
+  padding: 1rem;
+
+  background-color: var(--dim-green);
+  color: var(--faint-green);
+  box-shadow: 0 0 5px var(--dark-green);
+}
+
+/* Remove default ul styles on nav links */
+nav ul {
+  list-style-type: none;
+  padding: 0.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0rem;
+  margin-right: 0rem;
+  width: 100%;
+}
+/* Customize main navigation */
+nav.main-nav ul {
+  display: flex;
+  flex-flow: row-wrap;
+  justify-items: center;
+  align-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+/* Style each nav button/link */
+nav.main-nav ul li {
+  margin: 0px;
+  justify-content: center;
+  width: 100%;
+}
+nav.main-nav ul li a {
+  text-align: center;
+  display: inline-block;
+  width: 70%;
+  padding: 0.75rem 0.75rem;
+  border: 1px solid var(--dim-blue);
+  border-radius: 0.5rem;
+  box-shadow:
+    0 0 2px var(--soft-blue),
+    0 0 2px var(--faint-blue) inset;
+
+  transition:
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease,
+    color 0.2s ease,
+    font-weight 0.2s ease;
+}
+
+/* customize nav link stylings*/
+nav a {
+  color: var(--faint-blue);
+  text-decoration: none;
+}
+nav a.current-page {
+  color: var(--dim-blue);
+  text-decoration: none;
+  font-weight: bold;
+  cursor: default;
+}
+nav.main-nav a:hover {
+  font-weight: bold;
+  box-shadow: 0 0 10px var(--faint-blue) inset;
+  border-color: var(--faint-green);
+  background-color: var(--dim-blue);
+  opacity: 0.8;
+  color: white;
+}
+
+/* Footer styling */
+.main-footer {
+  padding: 1rem;
+  background-color: var(--dim-blue);
+  box-shadow: 0 0 10px var(--dim-blue);
+}
+.copyright-notice {
+  font-size: small;
+  color: var(--soft-blue);
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
