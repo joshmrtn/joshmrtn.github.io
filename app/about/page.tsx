@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <main className="m-2">
+    <main className="m-2 grow">
       <h1 className="mb-4 text-xl">About Me</h1>
       <div className="flex flex-col gap-1">
         <p>I'm a full-stack developer!</p>
