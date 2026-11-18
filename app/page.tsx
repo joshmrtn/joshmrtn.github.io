@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main className="m-2">
-      <h1 className="text-xl mb-4">Josh Martin</h1>
+      <h1 className="mb-4 text-xl">Josh Martin</h1>
       <div className="flex flex-col gap-1">
         <p>Josh Martin • Personal Website</p>
         <p>Under construction 🚧</p>
