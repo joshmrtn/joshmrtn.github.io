@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
+import ThemeChanger from '@/app/ui/theme-changer';
 
 export default function TopNav() {
   const links = [
@@ -30,6 +31,7 @@ export default function TopNav() {
           </Link>
         );
       })}
+      <ThemeChanger />
     </div>
   );
 }
