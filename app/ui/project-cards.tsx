@@ -1,4 +1,4 @@
-import { Project } from '../lib/definitions';
+import { Project } from '@/lib/projects';
 import ProjectCard from '@/app/ui/project-card';
 
 /** A responsive grid of ProjectCards  */

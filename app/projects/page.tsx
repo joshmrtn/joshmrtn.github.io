@@ -1,7 +1,9 @@
-import { projects } from '@/app/data/projects';
-import ProjectCards from '../ui/project-cards';
+import { getAllProjects } from '@/lib/projects';
+import ProjectCards from '@/app/ui/project-cards';
 
-export default function Page() {
+export default async function Page() {
+  const projects = await getAllProjects();
+
   return (
     <main className="m-2 flex grow flex-col gap-5">
       <h1 className="mb-4 text-xl">Projects</h1>

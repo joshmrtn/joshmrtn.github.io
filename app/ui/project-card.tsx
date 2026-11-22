@@ -1,18 +1,13 @@
-import { Project } from '@/app/lib/definitions';
-import Image from 'next/image';
+import { Project } from '@/lib/projects';
+import OptimizedImage from '@/app/ui/optimized-image';
 import Link from 'next/link';
 
 export default function ProjectCard({ project }: { project: Project }) {
   const cardTitle = <h3 className="text-lg font-bold">{project.title}</h3>;
-  const cardImage = (
-    <Image
-      src={'https://placehold.co/600x400'}
-      alt={'placeholder image'}
-      width={600}
-      height={400}
-      unoptimized
-    />
-  );
+  const cardImage = project.thumbnail ? (
+    <OptimizedImage src={project.thumbnail} alt={`${project.title} preview`} />
+  ) : null;
+
   return (
     <article className="flex h-full w-full flex-col gap-6 rounded bg-linear-to-br from-cyan-400/10 to-emerald-400/10 px-3 py-5 shadow-xs inset-shadow-xs shadow-emerald-500 inset-shadow-cyan-500">
       {/* Conditionally wrap title and image with Link if the slug is provided */}
